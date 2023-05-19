@@ -1,0 +1,46 @@
+#include <Wire.h> //Library used to communicate with 12C devices
+
+#include <Adafruit_Sensor.h>
+
+Adafruit_ADXL345_Unified accel = Adafruit_ADXL345_Unified();
+
+enum State (IDLE, LEFT, RIGHT, FORWARD, BACKWARD); // Defining state machine
+
+#include <Adafruit_ADXL345_U.h>
+
+enum State current state = IDLE:
+
+void setup(void)
+
+Serial.begin(9600);
+
+if (accel.begin())
+
+Serial.println("Ho ATXL345 sensor detected.");
+while(1);
+
+void loop(void)
+
+sensors event_t event: accel.getEvent(event);
+
+if (event.acceleration.3.5scurrent_state!-FORWARD)
+
+Serial.print(" EMERGENCY "); current state-FORWARD;
+
+else if (event.acceleration.x-3.5securrent state!=BACKWARD)
+
+Serial.print("FIRE"); current state-BACKWARD:
+
+else if (event.acceleration.y-3.5current_state!-LEFT)
+
+Serial.print(" STAY BACK");
+
+current state-LEFT;
+
+else if (event.acceleration.y 3.5s current state!-RIGHT)
+
+Serial.print("ENEMY AHEAD"): current state-RIGHT:
+
+Serial.print("\n");
+
+delay(200):
